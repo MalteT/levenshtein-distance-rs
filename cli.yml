@@ -1,0 +1,43 @@
+name: distance
+version: "0.1"
+author: Malte Tammena
+about: Calculate edit distances
+args:
+    - FILE:
+        help: Give input file to compare
+        value_name: FILE
+        help: Compare the given file's content
+        takes_value: true
+        multiple: true
+    - string:
+        short: s
+        long: string
+        value_name: STRING
+        help: Compare the given string
+        takes_value: true
+        multiple: true
+    - from-file:
+        long: from-file
+        value_name: FILE
+        help: Read filenames from FILE
+        takes_value: true
+    - linesep:
+        long: linesep
+        value_name: SEP
+        help: EOL seperator
+        takes_value: true
+        default_value: "\n"
+    - columnsep:
+        long: columnsep
+        value_name: SEP
+        help: Seperator between columns
+        takes_value: true
+        default_value: " "
+    - relative:
+        long: relative
+        short: r
+        help: Calculate distance relative to the amount of characters of the longest string
+    - trim-whitespaces:
+        long: trim-whitespaces
+        short: t
+        help: Trim whitespaces and and empty lines at start and end of strings before comparision
