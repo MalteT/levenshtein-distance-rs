@@ -1,4 +1,4 @@
-### Installation
+## Installation
 
 With Rust installed, simply clone this repository and install or compile it using `cargo`. Note that `cargo` will install the program
 to `~/.cargo/bin` on Linux machines and to some other place on Windows and Mac. At least on Linux the `PATH` variable will need some adjustment.
@@ -15,7 +15,7 @@ For installation only, this can be compressed to
 > cargo install --git https://github.com/MalteT/levenshtein-distance-rs
 ```
 
-### Usage
+## Usage
 
 In the simplest form just run:
 ```shell
@@ -49,6 +49,7 @@ Last but not least, strings can be supplied instead of files
 2 <string0> <string1>
 ```
 
+### `distance --help`
 ```
 distance 1.0.0
 Malte Tammena
@@ -67,8 +68,7 @@ OPTIONS:
         --columnsep <SEP>       Seperator between output columns [default:  ]
         --from-file <FILE>      Read filenames from FILE. The file contains line-seperated paths. Whitespaces will be
                                 trimmed from the start and end of each line.
-        --linesep <SEP>         Output EOL seperator [default: 
-                                ]
+        --linesep <SEP>         Output EOL seperator [default:\n]
     -s, --string <STRING>...    Compare the given string
 
 ARGS:
