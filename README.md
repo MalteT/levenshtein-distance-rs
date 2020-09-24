@@ -49,8 +49,8 @@ Last but not least, strings can be supplied instead of files
 2 <string0> <string1>
 ```
 
-
-distance 0.1
+```
+distance 1.0.0
 Malte Tammena
 Calculate edit distances
 
@@ -64,9 +64,11 @@ FLAGS:
     -V, --version             Prints version information
 
 OPTIONS:
-        --columnsep <SEP>       Seperator between columns [default:  ]
-        --from-file <FILE>      Read filenames from FILE
-        --linesep <SEP>         EOL seperator [default:\n]
+        --columnsep <SEP>       Seperator between output columns [default:  ]
+        --from-file <FILE>      Read filenames from FILE. The file contains line-seperated paths. Whitespaces will be
+                                trimmed from the start and end of each line.
+        --linesep <SEP>         Output EOL seperator [default: 
+                                ]
     -s, --string <STRING>...    Compare the given string
 
 ARGS:
