@@ -19,18 +19,18 @@ args:
     - from-file:
         long: from-file
         value_name: FILE
-        help: Read filenames from FILE
+        help: Read filenames from FILE. The file contains line-seperated paths. Whitespaces will be trimmed from the start and end of each line.
         takes_value: true
     - linesep:
         long: linesep
         value_name: SEP
-        help: EOL seperator
+        help: Output EOL seperator
         takes_value: true
         default_value: "\n"
     - columnsep:
         long: columnsep
         value_name: SEP
-        help: Seperator between columns
+        help: Seperator between output columns
         takes_value: true
         default_value: " "
     - relative:

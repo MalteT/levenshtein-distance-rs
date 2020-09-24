@@ -2,7 +2,7 @@ use clap::{load_yaml, App};
 use edit_distance::edit_distance;
 use itertools::Itertools;
 
-use std::{cmp::max, fs, io, path::Path, fmt};
+use std::{cmp::max, fmt, fs, io, path::Path};
 
 fn main() -> io::Result<()> {
     let yaml = load_yaml!("../cli.yml");
@@ -12,10 +12,11 @@ fn main() -> io::Result<()> {
     let relative = matches.is_present("relative");
     let trim_whitespaces = matches.is_present("trim-whitespaces");
     let mut strings: Vec<(Option<String>, String)> = matches
-        .values_of_lossy("strings")
+        .values_of_lossy("string")
         .unwrap_or_default()
         .drain(..)
-        .map(|s| (None, s))
+        .enumerate()
+        .map(|(nr, s)| (Some(format!("<string{}>", nr)), s))
         .collect();
     if let Some(file) = matches.value_of_lossy("from-file") {
         let mut filenames = read_filenames_from_file(file.to_string())?;
@@ -65,11 +66,17 @@ where
     P: AsRef<Path>,
 {
     let content = fs::read_to_string(path)?;
-    let lines = content.lines().map(|s| s.to_owned());
+    let lines = content
+        .lines()
+        .filter(|line| !line.trim().is_empty())
+        .map(|line| line.trim().to_owned());
     Ok(lines.collect())
 }
 
-fn notify_err<T, E>(result: Result<T, E>) -> Option<T> where E: fmt::Debug {
+fn notify_err<T, E>(result: Result<T, E>) -> Option<T>
+where
+    E: fmt::Debug,
+{
     match result {
         Ok(inner) => Some(inner),
         Err(e) => {
